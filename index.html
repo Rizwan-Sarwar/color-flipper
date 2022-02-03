@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color flipper</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: white;
+            height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .topbar {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 5px 15px #00000033;
+            background-color: white;
+        }
+        
+        .topbar h4 {
+            color: #49a6e9;
+            text-transform: capitalize;
+            font-family: sans-serif;
+            letter-spacing: 2px;
+        }
+        
+        .btn_wrapper a {
+            color: #063251;
+            text-transform: capitalize;
+            font-size: 18px;
+            font-family: sans-serif;
+            font-weight: 600;
+            text-decoration: unset;
+        }
+        
+        .after_topbar {
+            position: absolute;
+            width: 580px;
+            height: 250px;
+            margin: auto;
+            top: calc(0px + 50px);
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .after_topbar h1 {
+            background-color: #222222;
+            color: white;
+            font-family: sans-serif;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 36px;
+        }
+        
+        .after_topbar button {
+            display: block;
+            margin: 50px auto 0px;
+            font-size: 22px;
+            text-transform: capitalize;
+            background-color: transparent;
+            border: 1px solid #222222;
+            color: #222222;
+            padding: 6px 10px;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px #222222;
+            transition: 0.3s ease-in-out;
+        }
+        
+        .after_topbar button:hover {
+            background-color: #222222;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="topbar">
+            <h4>color flipper</h4>
+
+            <div class="btn_wrapper">
+                <a href="#" onclick="bgColorOnload()">simple</a>
+            </div>
+        </div>
+        <div class="after_topbar">
+            <h1>background-color : <span id="colorCode"></span></h1>
+            <button onclick="bodyBackgroundColor()">click me</button>
+        </div>
+    </div>
+    <script>
+        var htmlBody = document.body;
+
+        function bodyBackgroundColor() {
+            var colorLetters = '0123456789ABCDEF'
+            var color = '#'
+            for (var i = 0; i < 6; i++) {
+                color += colorLetters[Math.floor(Math.random() * 16)]
+            }
+            document.getElementById("colorCode").innerText = color;
+            htmlBody.style.backgroundColor = color;
+        }
+
+        function bgColorOnload() {
+            htmlBody.style.backgroundColor = "white";
+            document.getElementById("colorCode").innerText = "#ffffff";
+        }
+        bgColorOnload()
+    </script>
+</body>
+
+</html>
